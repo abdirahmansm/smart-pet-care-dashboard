@@ -30,9 +30,10 @@
     --color-error: #ef4444;
     --color-error-foreground: #ffffff;
     --radius: 0.5rem;
+    color-scheme: light;
   }
 
-  .dark {
+  :root[data-theme='dark'] {
     --color-border: #374151;
     --color-input: #374151;
     --color-ring: #3b82f6;
@@ -58,6 +59,11 @@
     --color-warning-foreground: #ffffff;
     --color-error: #ef4444;
     --color-error-foreground: #ffffff;
+    color-scheme: dark;
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
   }
 
   * {

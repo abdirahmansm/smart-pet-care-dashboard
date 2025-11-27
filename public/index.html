@@ -6,9 +6,36 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
     <title>Smart Pet Care Dashboard</title>
+    <script type="module" async>
+      (function () {
+        const storageKey = "smart-pet-care-theme-mode";
+        const savedMode = (() => {
+          try {
+            return localStorage.getItem(storageKey);
+          } catch (error) {
+            return null;
+          }
+        })();
+
+        const getPreferredTheme = () => {
+          if (savedMode === "light" || savedMode === "dark") {
+            return savedMode;
+          }
+          if (typeof window !== "undefined" && window.matchMedia) {
+            return window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          return "light";
+        };
+
+        const theme = getPreferredTheme();
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" async src="/src/index.jsx"></script>
+    <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>

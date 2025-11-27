@@ -1,47 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '../common/ThemeProvider';
+
+const modeSequence = {
+  light: 'dark',
+  dark: 'system',
+  system: 'light'
+};
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    
-    if (newIsDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
+  const { mode, theme, setMode } = useTheme();
+  const nextMode = modeSequence[mode] || 'light';
 
   return (
     <button
-      onClick={toggleTheme}
-      className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted hover:bg-muted/80 transition-colors duration-200"
-      aria-label="Toggle theme"
+      onClick={() => setMode(nextMode)}
+      className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg border border-border hover:bg-muted/80 transition-colors duration-200"
+      aria-label={`Switch theme (current: ${mode})`}
+      title={`Switch theme (current: ${mode})`}
     >
-      {isDark ? (
-        <Sun className="w-5 h-5 text-yellow-500" />
+      {theme === 'dark' ? (
+        <Sun className="w-4 h-4 text-yellow-400" />
       ) : (
-        <Moon className="w-5 h-5 text-slate-700" />
+        <Moon className="w-4 h-4 text-slate-700" />
       )}
+      <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground hidden sm:inline">
+        {mode}
+      </span>
     </button>
   );
 };
