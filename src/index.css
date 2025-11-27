@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-border: #e5e7eb;
+    --color-input: #e5e7eb;
+    --color-ring: #2563eb;
+    --color-background: #f9fafb;
+    --color-foreground: #111827;
+    --color-primary: #2563eb;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #059669;
+    --color-secondary-foreground: #ffffff;
+    --color-destructive: #dc2626;
+    --color-destructive-foreground: #ffffff;
+    --color-muted: #f3f4f6;
+    --color-muted-foreground: #6b7280;
+    --color-accent: #f59e0b;
+    --color-accent-foreground: #ffffff;
+    --color-popover: #ffffff;
+    --color-popover-foreground: #111827;
+    --color-card: #ffffff;
+    --color-card-foreground: #111827;
+    --color-success: #10b981;
+    --color-success-foreground: #ffffff;
+    --color-warning: #f59e0b;
+    --color-warning-foreground: #ffffff;
+    --color-error: #ef4444;
+    --color-error-foreground: #ffffff;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --color-border: #374151;
+    --color-input: #374151;
+    --color-ring: #3b82f6;
+    --color-background: #0f172a;
+    --color-foreground: #f1f5f9;
+    --color-primary: #3b82f6;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #10b981;
+    --color-secondary-foreground: #ffffff;
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #ffffff;
+    --color-muted: #1e293b;
+    --color-muted-foreground: #94a3b8;
+    --color-accent: #f59e0b;
+    --color-accent-foreground: #ffffff;
+    --color-popover: #1e293b;
+    --color-popover-foreground: #f1f5f9;
+    --color-card: #1e293b;
+    --color-card-foreground: #f1f5f9;
+    --color-success: #10b981;
+    --color-success-foreground: #ffffff;
+    --color-warning: #f59e0b;
+    --color-warning-foreground: #ffffff;
+    --color-error: #ef4444;
+    --color-error-foreground: #ffffff;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .navigation-bar {
+    @apply bg-card border-b border-border px-4 py-3;
+  }
+
+  .navigation-container {
+    @apply max-w-7xl mx-auto flex items-center justify-between;
+  }
+
+  .navigation-items {
+    @apply flex items-center gap-6;
+  }
+
+  .navigation-item {
+    @apply flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors;
+  }
+
+  .navigation-item.active {
+    @apply text-primary bg-primary/10;
+  }
+
+  .alert-badge-container {
+    @apply relative;
+  }
+
+  .alert-badge {
+    @apply flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg cursor-pointer hover:bg-muted transition-colors;
+  }
+
+  .alert-badge-count {
+    @apply px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .alert-badge-pulse {
+    @apply absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full animate-pulse;
+  }
+
+  .pet-selector-container {
+    @apply relative;
+  }
+
+  .pet-selector-button {
+    @apply flex items-center gap-3 px-3 py-2 bg-card border border-border rounded-lg cursor-pointer hover:bg-muted transition-colors;
+  }
+
+  .pet-selector-avatar {
+    @apply w-8 h-8 rounded-full object-cover;
+  }
+
+  .pet-selector-info {
+    @apply flex flex-col;
+  }
+
+  .pet-selector-name {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .pet-selector-status {
+    @apply text-xs text-muted-foreground;
+  }
+
+  .pet-selector-dropdown {
+    @apply absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-lg shadow-lg z-50;
+  }
+
+  .pet-selector-item {
+    @apply flex items-center gap-3 px-4 py-3 hover:bg-muted cursor-pointer;
+  }
+
+  .pet-selector-item.active {
+    @apply bg-primary/10;
+  }
+
+  .main-content {
+    @apply px-4 py-6;
+  }
+
+  .vital-sign-card {
+    /* already using Tailwind */
+  }
+
+  .chart-container {
+    /* already using Tailwind */
+  }
+
+  .alert-panel {
+    /* already using Tailwind */
+  }
+
+  .activity-feed {
+    /* already using Tailwind */
+  }
+
+  .milestone-tracker {
+    /* already using Tailwind */
+  }
+
+  .care-reminders {
+    /* already using Tailwind */
+  }
+
+  .quick-actions {
+    /* already using Tailwind */
+  }
+}
